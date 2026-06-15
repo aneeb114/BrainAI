@@ -163,7 +163,10 @@ export default function Tools() {
           <div className="glass-card p-6 md:p-8 rounded-3xl min-h-[500px] flex flex-col">
              <div className="flex items-center gap-3 mb-6">
                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                 {tools.find(t => t.id === activeTool)?.icon({ className: "w-5 h-5 text-primary" })}
+                 {(() => {
+                   const ToolIcon = tools.find(t => t.id === activeTool)?.icon;
+                   return ToolIcon ? <ToolIcon className="w-5 h-5 text-primary" /> : null;
+                 })()}
                </div>
                <div>
                  <h2 className="text-white font-bold">{tools.find(t => t.id === activeTool)?.name}</h2>
